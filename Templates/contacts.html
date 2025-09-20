@@ -1,16 +1,24 @@
 {% extends "base.html" %}
 {% block title %}Contact Us - Kie's DIY Jewelry{% endblock %}
 {% block content %}
-<main style="margin: 50px auto; background-color: rgba(255, 255, 255, 0.9); max-width: 450px; padding: 30px 40px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); text-align: left;">
-  <h2 style="text-align: center; margin-bottom: 20px; color: #444;">Contact Us</h2>
-  <form action="{{ url_for('contact') }}" method="post">
-    <label for="name" style="display: block; margin-top: 15px; font-weight: bold; color: #555;">Your Name:</label>
-    <input type="text" id="name" name="name" placeholder="John Doe" required style="width: 100%; padding: 8px 12px; margin-top: 6px; border: 1.5px solid #ccc; border-radius: 6px; font-size: 16px; box-sizing: border-box; transition: border-color 0.3s ease; resize: vertical;" />
+<main style="max-width: 500px; margin: 80px auto; padding: 30px 40px; background-color: rgba(255,255,255,0.9); border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.2);">
+  <h2 style="text-align: center; color: #444; margin-bottom: 20px;">Contact Us</h2>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <ul style="list-style: none; padding: 0; margin-bottom: 20px;">
+        {% for category, message in messages %}
+          <li style="color: {% if category == 'success' %}green{% else %}red{% endif %}; font-weight: bold;">{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
 
-    <label for="email" style="display: block; margin-top: 15px; font-weight: bold; color: #555;">Email Address:</label>
-    <input type="email" id="email" name="email" placeholder="john@example.com" required style="width: 100%; padding: 8px 12px; margin-top: 6px; border: 1.5px solid #ccc; border-radius: 6px; font-size: 16px; box-sizing: border-box; transition: border-color 0.3s ease; resize: vertical;" />
+  <form method="POST" action="{{ url_for('contact') }}">
+    <label for="name" style="font-weight: bold; color: #555;">Name:</label><br>
+    <input type="text" id="name" name="name" placeholder="Your full name" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1.5px solid #ccc; border-radius: 6px;">
 
-    <label for="message" style="display: block; margin-top: 15px; font-weight: bold; color: #555;">Your Message:</label>
-    <textarea id="message" name="message" placeholder="Write your message here..." required style="width: 100%; padding: 8px 12px; margin-top: 6px; border: 1.5px solid #ccc; border-radius: 6px; font-size: 16px; box-sizing: border-box; transition: border-color 0.3s ease; resize: vertical; min-height: 100px;"></textarea>
+    <label for="email" style="font-weight: bold; color: #555;">Email:</label><br>
+    <input type="email" id="email" name="email" placeholder="you@example.com" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1.5px solid #ccc; border-radius: 6px;">
 
-    <button type="submit" style="margin-top: 25px; width: 100%; padding: 12px; font-size: 18px; font-weight: bold; background-color: #6e8efb; color: white; border: none; border-radius: 8px; cursor: pointer
+    <label for="message" style="font-weight: bold; color: #555;">Message:</label><br>
+    <textarea id="message" name="message" placeholder="Write your message here..." required style="width: 100%; padding: 10px; margin-bottom: 20px; height: 120px; border: 1.5px solid #ccc; b

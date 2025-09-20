@@ -1,31 +1,32 @@
 {% extends "base.html" %}
 {% block title %}Order - Kie's DIY Jewelry{% endblock %}
 {% block content %}
-<main style="margin: 50px auto; background-color: rgba(255, 255, 255, 0.9); max-width: 500px; padding: 30px 40px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); text-align: left;">
-  <h2 style="text-align: center; margin-bottom: 20px; color: #444;">Place Your Order</h2>
-  <form action="{{ url_for('order') }}" method="post">
-    <label for="product" style="display: block; margin-top: 15px; font-weight: bold; color: #555;">Product:</label>
-    <select id="product" name="product" required style="width: 100%; padding: 8px 12px; margin-top: 6px; border: 1.5px solid #ccc; border-radius: 6px; font-size: 16px;">
-      <option value="" disabled selected>Select a product</option>
-      <option value="Bracelet">Bracelet</option>
-      <option value="Necklace">Necklace</option>
-      <option value="Earrings">Earrings</option>
-      <option value="Ring">Ring</option>
+<main style="max-width: 500px; margin: 80px auto; padding: 30px 40px; background-color: #f7f7f7; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.1);">
+  <h2 style="text-align: center; color: #444; margin-bottom: 20px;">Place Your Order</h2>
+
+  <form method="POST" action="{{ url_for('order') }}">
+    <label for="product" style="font-weight: bold; color: #555;">Product:</label><br>
+    <select name="product" id="product" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1.5px solid #ccc; border-radius: 6px; background-color: #fff; color: #333;">
+      <option value="Handmade Silver Ring">Handmade Silver Ring - ₱1,200</option>
+      <option value="Custom Beaded Necklace">Custom Beaded Necklace - ₱850</option>
+      <option value="Engraved Bracelets">Engraved Bracelets - ₱1,500</option>
     </select>
 
-    <label for="quantity" style="display: block; margin-top: 15px; font-weight: bold; color: #555;">Quantity:</label>
-    <input type="number" id="quantity" name="quantity" min="1" max="20" value="1" required style="width: 100%; padding: 8px 12px; margin-top: 6px; border: 1.5px solid #ccc; border-radius: 6px; font-size: 16px;" />
+    <label for="quantity" style="font-weight: bold; color: #555;">Quantity:</label><br>
+    <input type="number" id="quantity" name="quantity" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1.5px solid #ccc; border-radius: 6px; background-color: #fff; color: #333;">
 
-    <label for="name" style="display: block; margin-top: 15px; font-weight: bold; color: #555;">Full Name:</label>
-    <input type="text" id="name" name="name" placeholder="John Doe" required style="width: 100%; padding: 8px 12px; margin-top: 6px; border: 1.5px solid #ccc; border-radius: 6px; font-size: 16px;" />
+    <label for="name" style="font-weight: bold; color: #555;">Name:</label><br>
+    <input type="text" id="name" name="name" placeholder="Your full name" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1.5px solid #ccc; border-radius: 6px; background-color: #fff; color: #333;">
 
-    <label for="email" style="display: block; margin-top: 15px; font-weight: bold; color: #555;">Email Address:</label>
-    <input type="email" id="email" name="email" placeholder="john@example.com" required style="width: 100%; padding: 8px 12px; margin-top: 6px; border: 1.5px solid #ccc; border-radius: 6px; font-size: 16px;" />
+    <label for="email" style="font-weight: bold; color: #555;">Email:</label><br>
+    <input type="email" id="email" name="email" placeholder="you@example.com" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1.5px solid #ccc; border-radius: 6px; background-color: #fff; color: #333;">
 
-    <label for="phone" style="display: block; margin-top: 15px; font-weight: bold; color: #555;">Phone Number:</label>
-    <input type="tel" id="phone" name="phone" placeholder="123-456-7890" required style="width: 100%; padding: 8px 12px; margin-top: 6px; border: 1.5px solid #ccc; border-radius: 6px; font-size: 16px;" />
+    <label for="phone" style="font-weight: bold; color: #555;">Phone:</label><br>
+    <input type="text" id="phone" name="phone" placeholder="Your phone number" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1.5px solid #ccc; border-radius: 6px; background-color: #fff; color: #333;">
 
-    <button type="submit" style="margin-top: 25px; width: 100%; padding: 12px; font-size: 18px; font-weight: bold; background-color: #6e8efb; color: white; border: none; border-radius: 8px; cursor: pointer; transition: background-color 0.3s ease;">Submit Order</button>
+    <button type="submit" style="width: 100%; padding: 12px; background-color: #6e8efb; color: white; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; transition: background-color 0.3s ease;">
+      Submit Order
+    </button>
   </form>
 </main>
 {% endblock %}

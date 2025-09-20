@@ -1,25 +1,42 @@
 {% extends "base.html" %}
 {% block title %}Products - Kie's DIY Jewelry{% endblock %}
 {% block content %}
-<section style="margin: 50px auto; max-width: 900px; background-color: rgba(255, 255, 255, 0.9); padding: 40px 60px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); color: #444; text-align: left;">
-  <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 30px;">Our Products</h2>
-  <ul style="list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 30px;">
-    <li style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center;">
-      <h3>Bracelet</h3>
-      <p>Handmade beaded bracelets with unique charms.</p>
+
+<main class="products-container" style="background-color: #f4f4f4; padding: 40px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);">
+  <h2 class="welcome-message" style="font-size: 2.5rem; color: #333; text-align: center; margin-bottom: 20px;">Welcome to Kie's DIY Jewelry, {{ user }}!</h2>
+  <p class="intro-text" style="font-size: 1.25rem; color: #555; text-align: center; margin-bottom: 40px;">Here are your products with prices:</p>
+
+  <ul class="product-list" style="list-style: none; padding-left: 0; display: grid; gap: 30px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+    <!-- Product 1 -->
+    <li class="product-item" style="background-color: #fff; border-radius: 12px; padding: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: all 0.3s ease;">
+      <img src="Bracelet.jpg" alt="Handmade Silver Ring" class="product-image" style="width: 100%; height: auto; border-radius: 10px; object-fit: cover; margin-bottom: 20px;">
+      <div class="product-details">
+        <h3 class="product-title" style="font-size: 1.5rem; color: #333; margin-bottom: 10px;">Handmade Silver Ring <strong class="product-price" style="color: #6e8efb;">₱1,200</strong></h3>
+        <p class="product-description" style="font-size: 1rem; color: #666; margin-bottom: 20px;">Elegant and timeless, this handmade silver ring is perfect for any occasion.</p>
+        <button class="add-to-cart-btn" style="background-color: #6e8efb; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: bold; transition: background-color 0.3s ease;">Add to Cart</button>
+      </div>
     </li>
-    <li style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center;">
-      <h3>Necklace</h3>
-      <p>Elegant necklaces made from quality materials.</p>
+
+    <!-- Product 2 -->
+    <li class="product-item" style="background-color: #fff; border-radius: 12px; padding: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: all 0.3s ease;">
+      <img src="https://via.placeholder.com/120x120?text=Necklace" alt="Custom Beaded Necklace" class="product-image" style="width: 100%; height: auto; border-radius: 10px; object-fit: cover; margin-bottom: 20px;">
+      <div class="product-details">
+        <h3 class="product-title" style="font-size: 1.5rem; color: #333; margin-bottom: 10px;">Custom Beaded Necklace <strong class="product-price" style="color: #6e8efb;">₱850</strong></h3>
+        <p class="product-description" style="font-size: 1rem; color: #666; margin-bottom: 20px;">Bright and colorful beads handcrafted into a unique necklace made just for you.</p>
+        <button class="add-to-cart-btn" style="background-color: #6e8efb; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: bold; transition: background-color 0.3s ease;">Add to Cart</button>
+      </div>
     </li>
-    <li style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center;">
-      <h3>Earrings</h3>
-      <p>Stylish earrings for every occasion.</p>
-    </li>
-    <li style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center;">
-      <h3>Ring</h3>
-      <p>Custom rings handcrafted with care.</p>
+
+    <!-- Product 3 -->
+    <li class="product-item" style="background-color: #fff; border-radius: 12px; padding: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: all 0.3s ease;">
+      <img src="https://via.placeholder.com/120x120?text=Engraved+Bracelet" alt="Engraved Bracelets" class="product-image" style="width: 100%; height: auto; border-radius: 10px; object-fit: cover; margin-bottom: 20px;">
+      <div class="product-details">
+        <h3 class="product-title" style="font-size: 1.5rem; color: #333; margin-bottom: 10px;">Engraved Bracelets <strong class="product-price" style="color: #6e8efb;">₱1,500</strong></h3>
+        <p class="product-description" style="font-size: 1rem; color: #666; margin-bottom: 20px;">Personalized engraved bracelets that make perfect gifts for your loved ones.</p>
+        <button class="add-to-cart-btn" style="background-color: #6e8efb; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: bold; transition: background-color 0.3s ease;">Add to Cart</button>
+      </div>
     </li>
   </ul>
-</section>
+</main>
+
 {% endblock %}
