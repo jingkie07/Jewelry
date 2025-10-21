@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    .contact {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 90vh;
+        background: linear-gradient(135deg, #fdfbfb, #ebedee);
+        font-family: 'Poppins', sans-serif;
+        padding: 2rem;
+    }
+
+    .contact h2 {
+        font-size: 2.5rem;
+        color: #7a3e9d;
+        margin-bottom: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    form {
+        background: #fff;
+        padding: 2.5rem 3rem;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 500px;
+    }
+
+    label {
+        display: block;
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+        color: #444;
+        font-weight: 600;
+        font-size: 1rem;
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 0.9rem;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        font-size: 1rem;
+        font-family: inherit;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    input:focus, textarea:focus {
+        border-color: #7a3e9d;
+        box-shadow: 0 0 8px rgba(122, 62, 157, 0.2);
+        outline: none;
+    }
+
+    button {
+        margin-top: 1.5rem;
+        width: 100%;
+        padding: 0.9rem;
+        background-color: #7a3e9d;
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    button:hover {
+        background-color: #a26fcb;
+        transform: scale(1.02);
+    }
+
+    @media (max-width: 600px) {
+        .contact h2 {
+            font-size: 2rem;
+        }
+        form {
+            padding: 2rem;
+        }
+    }
+</style>
+
+<section class="contact">
+    <h2>Contact Us</h2>
+    <form method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Your full name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="your@email.com" required>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" placeholder="Write your message..." required></textarea>
+
+        <button type="submit">Send Message</button>
+    </form>
+</section>
+{% endblock %}

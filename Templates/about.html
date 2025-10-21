@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    .info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 80vh;
+        text-align: center;
+        padding: 2rem;
+        background: linear-gradient(to bottom right, #f9f9f9, #f1e6ff);
+        color: #333;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .info h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: #7a3e9d;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .info p {
+        max-width: 700px;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        margin-bottom: 1rem;
+    }
+</style>
+
+<section class="info">
+    <h2>About KIE DIY Jewelry</h2>
+    <p>
+        DIY Jewelry was born from a passion for artistry and self-expression.
+        Every piece is crafted with love, blending modern elegance with handmade charm.
+    </p>
+    <p>
+        Our mission is to empower creativity — giving you beautiful, affordable jewelry
+        that tells your story.
+    </p>
+</section>
+{% endblock %}
