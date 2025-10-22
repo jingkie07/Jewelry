@@ -95,3 +95,74 @@ footer {
 
 .flash.success { background-color: #d4edda; color: #155724; }
 .flash.danger { background-color: #f8d7da; color: #721c24; }
+}
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background-color: #fdfcfb;
+    color: #333;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f3e9e2;
+    padding: 15px 40px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-weight: 600;
+    font-size: 1.4em;
+    color: #b5838d;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #444;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #b5838d;
+}
+
+.btn {
+    background: #b5838d;
+    color: white !important;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+.btn:hover {
+    background: #8e5a6a;
+}
+
+.flash-messages {
+    text-align: center;
+    margin: 20px;
+}
+
+.flash {
+    background: #ffe6ea;
+    border-radius: 6px;
+    padding: 10px;
+    margin-bottom: 8px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #f3e9e2;
+    color: #555;
+    margin-top: 40px;
+    font-size: 0.9em;
+}

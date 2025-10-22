@@ -4,15 +4,113 @@
     <meta charset="UTF-8">
     <title>{{ title }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f4ff;
+        }
+
+        header {
+            background-color: #7a3e9d;
+            color: white;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+        }
+
+        nav {
+            display: flex;
+            gap: 1.2rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #f0c6ff;
+        }
+
+        /* ---- BUTTONS ---- */
+        .btn {
+            background-color: #b57edc; /* soft lavender purple */
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #9d5bd2; /* deeper purple on hover */
+        }
+
+        .welcome {
+            color: #ffd6ff;
+            font-weight: 600;
+        }
+
+        main {
+            padding: 2rem;
+        }
+
+        .flash {
+            margin: 1rem auto;
+            padding: 1rem;
+            max-width: 600px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .flash.success {
+            background-color: #d7ffd7;
+            color: #2e7d32;
+        }
+
+        .flash.danger {
+            background-color: #ffd7d7;
+            color: #b71c1c;
+        }
+
+        footer {
+            text-align: center;
+            background-color: #7a3e9d;
+            color: white;
+            padding: 1.5rem 0;
+            margin-top: 3rem;
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1> KIE DIY Jewelry</h1>
+        <h1>KIE DIY Jewelry</h1>
         <nav>
             <a href="{{ url_for('home') }}">Home</a>
             <a href="{{ url_for('about') }}">About</a>
             <a href="{{ url_for('shop') }}">Shop</a>
             <a href="{{ url_for('contact') }}">Contact</a>
+
+            {% if user %}
+                <span class="welcome">Hi, {{ user }}!</span>
+                <a href="{{ url_for('logout') }}" class="btn">Logout</a>
+            {% else %}
+                <a href="{{ url_for('login') }}" class="btn">Login</a>
+                <a href="{{ url_for('signup') }}" class="btn">Sign Up</a>
+            {% endif %}
         </nav>
     </header>
 
@@ -24,11 +122,12 @@
                 {% endfor %}
             {% endif %}
         {% endwith %}
+
         {% block content %}{% endblock %}
     </main>
 
     <footer>
-        <p>&copy; 2025 DIY Jewelry. Handcrafted with ❤️ and creativity.</p>
+        <p>&copy; 2025 KIE DIY Jewelry. Handcrafted with ❤️ and creativity.</p>
     </footer>
 </body>
 </html>
