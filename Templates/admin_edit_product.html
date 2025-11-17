@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    .edit-product {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 90vh;
+        padding: 3rem 2rem;
+        color: #ffeaff;
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+        text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    }
+
+    .edit-product h2 {
+        font-size: 3rem;
+        margin-bottom: 2rem;
+        color: #ffd6ff;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    form {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(6px);
+        padding: 2.5rem 2.5rem;
+        border-radius: 15px;
+        width: 100%;
+        max-width: 500px;
+    }
+
+    label {
+        display: block;
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        color: #ffeaff;
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 0.9rem;
+        border: 1px solid rgba(255,255,255,0.5);
+        border-radius: 10px;
+        font-size: 1rem;
+        font-family: inherit;
+        background: rgba(255,255,255,0.1);
+        color: #fff;
+        backdrop-filter: blur(4px);
+        transition: border-color 0.3s ease;
+    }
+
+    input::placeholder, textarea::placeholder {
+        color: rgba(255,255,255,0.7);
+    }
+
+    input:focus, textarea:focus {
+        border-color: #ffd6ff;
+        outline: none;
+    }
+
+    img.current-img {
+        width: 180px;
+        border-radius: 10px;
+        margin: 1rem 0;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    button.save-btn {
+        margin-top: 1.5rem;
+        width: 100%;
+        padding: 0.9rem;
+        background-color: rgba(180, 100, 230, 0.85);
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    button.save-btn:hover {
+        background-color: rgba(210, 140, 255, 1);
+        transform: scale(1.02);
+    }
+
+    .cancel-btn {
+        background-color: rgba(180,180,180,0.5);
+        width: 100%;
+        margin-top: 1.2rem; /* Added spacing from Save button */
+        padding: 0.9rem;
+        border-radius: 10px;
+        text-decoration: none;
+        color: #fff;
+        display: inline-block;
+        font-weight: 600;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .cancel-btn:hover {
+        background-color: rgba(200,200,200,0.7);
+        color: #000;
+        transform: scale(1.02);
+    }
+
+    @media (max-width: 600px) {
+        .edit-product h2 {
+            font-size: 2.2rem;
+        }
+        form {
+            padding: 2rem;
+        }
+        img.current-img {
+            width: 140px;
+        }
+    }
+</style>
+
+<section class="edit-product">
+    <h2>Edit Product</h2>
+    <form method="POST" enctype="multipart/form-data">
+        <label for="name">Product Name:</label>
+        <input type="text" id="name" name="name" value="{{ product.name }}" required>
+
+        <label for="price">Price (₱):</label>
+        <input type="number" step="0.01" id="price" name="price" value="{{ product.price }}" required>
+
+        <label for="desc">Description:</label>
+        <textarea id="desc" name="desc" rows="4" required>{{ product.desc }}</textarea>
+
+        <label>Current Image:</label>
+        <img src="{{ url_for('static', filename='images/' + product.image) }}" class="current-img">
+
+        <label for="image">Change Image (optional):</label>
+        <input type="file" id="image" name="image" accept="image/*">
+
+        <button type="submit" class="save-btn">Save Changes</button>
+        <a href="{{ url_for('admin_dashboard') }}" class="cancel-btn">Cancel</a>
+    </form>
+</section>
+{% endblock %}

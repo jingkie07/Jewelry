@@ -1,89 +1,114 @@
 {% extends 'base.html' %}
 {% block content %}
 <style>
-    .contact {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        min-height: 90vh;
-        background: linear-gradient(135deg, #fdfbfb, #ebedee);
-        font-family: 'Poppins', sans-serif;
+/* ================= Contact Footer Section ================= */
+.contact-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    background: rgba(180, 100, 230, 0.1);
+    border-radius: 15px;
+    color: #ffeaff;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    margin-top: 3rem;
+}
+
+.contact-footer h2 {
+    font-size: 2.8rem;
+    margin-bottom: 0.5rem;
+    color: #ffd6ff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.contact-footer p.subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #ffeaff;
+    opacity: 0.9;
+}
+
+.contact-footer form {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(6px);
+    padding: 3rem 2.5rem;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+
+.contact-footer label {
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #ffeaff;
+}
+
+.contact-footer input,
+.contact-footer textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 10px;
+    font-size: 1.05rem;
+    font-family: inherit;
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    backdrop-filter: blur(4px);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-footer input::placeholder,
+.contact-footer textarea::placeholder {
+    color: rgba(255,255,255,0.7);
+}
+
+.contact-footer input:focus,
+.contact-footer textarea:focus {
+    border-color: #ffd6ff;
+    outline: none;
+    box-shadow: 0 0 10px rgba(210,140,255,0.5);
+}
+
+.contact-footer button {
+    margin-top: 1.5rem;
+    width: 100%;
+    padding: 1rem;
+    background-color: rgba(180, 100, 230, 0.85);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.15rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-footer button:hover {
+    background-color: rgba(210, 140, 255, 1);
+    transform: scale(1.03);
+    box-shadow: 0 0 15px rgba(210,140,255,0.6);
+}
+
+@media (max-width: 600px) {
+    .contact-footer h2 {
+        font-size: 2.2rem;
+    }
+    .contact-footer form {
         padding: 2rem;
     }
-
-    .contact h2 {
-        font-size: 2.5rem;
-        color: #7a3e9d;
-        margin-bottom: 2rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
-
-    form {
-        background: #fff;
-        padding: 2.5rem 3rem;
-        border-radius: 15px;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-        width: 100%;
-        max-width: 500px;
-    }
-
-    label {
-        display: block;
-        margin-top: 1rem;
-        margin-bottom: 0.5rem;
-        color: #444;
-        font-weight: 600;
-        font-size: 1rem;
-    }
-
-    input, textarea {
-        width: 100%;
-        padding: 0.9rem;
-        border: 1px solid #ccc;
-        border-radius: 10px;
-        font-size: 1rem;
-        font-family: inherit;
-        transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    input:focus, textarea:focus {
-        border-color: #7a3e9d;
-        box-shadow: 0 0 8px rgba(122, 62, 157, 0.2);
-        outline: none;
-    }
-
-    button {
-        margin-top: 1.5rem;
-        width: 100%;
-        padding: 0.9rem;
-        background-color: #7a3e9d;
-        color: #fff;
-        border: none;
-        border-radius: 10px;
-        font-size: 1.1rem;
-        cursor: pointer;
-        transition: background-color 0.3s ease, transform 0.2s ease;
-    }
-
-    button:hover {
-        background-color: #a26fcb;
-        transform: scale(1.02);
-    }
-
-    @media (max-width: 600px) {
-        .contact h2 {
-            font-size: 2rem;
-        }
-        form {
-            padding: 2rem;
-        }
-    }
+}
 </style>
 
-<section class="contact">
+<section class="contact-footer">
     <h2>Contact Us</h2>
+    <p class="subtitle">Have a question or message? Reach out to us here!</p>
     <form method="POST">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" placeholder="Your full name" required>

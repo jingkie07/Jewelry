@@ -3,110 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ title }}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
+        html, body {
+            height: 100%;
             margin: 0;
             padding: 0;
-            background-color: #f9f4ff;
         }
 
+        /* 🌟 FULL BACKGROUND + SMOOTH OVERLAY */
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+
+            background:
+                linear-gradient(
+                    rgba(50, 0, 80, 0.45),
+                    rgba(120, 0, 150, 0.35)
+                ),
+                url("{{ url_for('static', filename='images/background.jpg') }}")
+                no-repeat center center fixed;
+            background-size: cover;
+            color: #f9eaff;
+        }
+
+        /* 🌟 HEADER */
         header {
-            background-color: #7a3e9d;
+            background: rgba(110, 0, 140, 0.55);
+            backdrop-filter: blur(6px);
             color: white;
-            padding: 1.2rem 2rem;
+            padding: 1.5rem 3rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
         header h1 {
-            font-size: 1.8rem;
+            font-size: 2rem;
             letter-spacing: 1px;
+            font-weight: 600;
         }
 
+        /* 🌟 NAVBAR */
         nav {
             display: flex;
-            gap: 1.2rem;
+            gap: 1.3rem;
             align-items: center;
         }
 
         nav a {
-            color: white;
+            color: #ffeaff;
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: #f0c6ff;
-        }
-
-        /* ---- BUTTONS ---- */
-        .btn {
-            background-color: #b57edc; /* soft lavender purple */
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            font-weight: 600;
-            text-decoration: none;
             transition: 0.3s;
         }
 
+        nav a:hover {
+            color: #ffd6ff;
+            text-shadow: 0 0 6px #ffffff;
+        }
+
+        /* 🌟 BUTTONS */
+        .btn {
+            background: rgba(180, 100, 230, 0.85);
+            padding: 0.6rem 1.2rem;
+            border-radius: 10px;
+            color: white;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+        }
+
         .btn:hover {
-            background-color: #9d5bd2; /* deeper purple on hover */
+            background: rgba(200, 130, 255, 1);
+            transform: scale(1.05);
         }
 
         .welcome {
-            color: #ffd6ff;
+            color: #ffd2ff;
             font-weight: 600;
         }
 
+        /* 🌟 MAIN CONTENT – NO WHITE BOX */
         main {
+            flex: 1;
             padding: 2rem;
+            width: 100%;
+            color: #fff3ff;
+            text-shadow: 0 1px 5px rgba(0,0,0,0.7);
         }
 
+        /* 🌟 FLASH MESSAGES */
         .flash {
             margin: 1rem auto;
             padding: 1rem;
             max-width: 600px;
-            border-radius: 8px;
+            border-radius: 12px;
             text-align: center;
+            font-weight: 600;
+            backdrop-filter: blur(6px);
         }
 
         .flash.success {
-            background-color: #d7ffd7;
-            color: #2e7d32;
+            background-color: rgba(80, 200, 120, 0.6);
+            color: #003d0b;
         }
 
         .flash.danger {
-            background-color: #ffd7d7;
-            color: #b71c1c;
+            background-color: rgba(255, 120, 120, 0.6);
+            color: #4a0202;
         }
 
+        /* 🌟 FOOTER */
         footer {
             text-align: center;
-            background-color: #7a3e9d;
+            background-color: rgba(110, 0, 140, 0.55);
+            backdrop-filter: blur(4px);
             color: white;
-            padding: 1.5rem 0;
-            margin-top: 3rem;
-            font-size: 0.9rem;
+            padding: 1.4rem 0;
+            font-size: 0.95rem;
+            margin-top: auto;
+            box-shadow: 0 -4px 12px rgba(0,0,0,0.35);
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Responsive tweaks */
+        @media(max-width: 768px){
+            header {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
         }
     </style>
 </head>
+
 <body>
+
     <header>
         <h1>KIE DIY Jewelry</h1>
         <nav>
-            <a href="{{ url_for('home') }}">Home</a>
-            <a href="{{ url_for('about') }}">About</a>
-            <a href="{{ url_for('shop') }}">Shop</a>
-            <a href="{{ url_for('contact') }}">Contact</a>
+            {% if not session.get('admin') %}
+                <!-- Show these links only for normal users -->
+                <a href="{{ url_for('home') }}">Home</a>
+                <a href="{{ url_for('about') }}">About</a>
+                <a href="{{ url_for('shop') }}">Shop</a>
+                <a href="{{ url_for('contact') }}">Contact</a>
+                <a href="{{ url_for('cart') }}">Cart</a>
+            {% endif %}
 
             {% if user %}
                 <span class="welcome">Hi, {{ user }}!</span>
                 <a href="{{ url_for('logout') }}" class="btn">Logout</a>
+            {% elif session.get('admin') %}
+                <span class="welcome">Admin</span>
+                <a href="{{ url_for('admin_logout') }}" class="btn">Logout</a>
             {% else %}
                 <a href="{{ url_for('login') }}" class="btn">Login</a>
                 <a href="{{ url_for('signup') }}" class="btn">Sign Up</a>
@@ -129,5 +187,6 @@
     <footer>
         <p>&copy; 2025 KIE DIY Jewelry. Handcrafted with ❤️ and creativity.</p>
     </footer>
+
 </body>
 </html>

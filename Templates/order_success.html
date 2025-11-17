@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card p-4 shadow-sm text-center">
+                <h2 class="mb-4 text-success">✅ Order Placed Successfully!</h2>
+                <p class="fs-5">Thank you for your purchase, {{ user }}!</p>
+
+                {% if order %}
+                <ul class="list-group my-4 text-start">
+                    <li class="list-group-item d-flex justify-content-between">
+                        <strong>Tracking Number:</strong>
+                        <span>{{ order['tracking_number'] }}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <strong>Total:</strong>
+                        <span>₱{{ "%.2f"|format(order['total']) }}</span>
+                    </li>
+                    {% if order.payment_method %}
+                    <li class="list-group-item d-flex justify-content-between">
+                        <strong>Payment Method:</strong>
+                        <span>{{ order['payment_method'] }}</span>
+                    </li>
+                    {% endif %}
+                    <li class="list-group-item d-flex justify-content-between">
+                        <strong>Status:</strong>
+                        <span>{{ order['status'] }}</span>
+                    </li>
+                </ul>
+                {% endif %}
+
+                <a href="{{ url_for('shop') }}" class="btn btn-primary w-100">Back to Shop</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

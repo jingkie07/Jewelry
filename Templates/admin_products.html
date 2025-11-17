@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <h2>All Products</h2>
+    <a href="{{ url_for('admin_add_product') }}" class="back-link">+ Add New Product</a>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in products %}
+            <tr>
+                <td>{{ p.id }}</td>
+                <td><img src="{{ url_for('static', filename='images/' ~ p.image) }}" width="50"></td>
+                <td>{{ p.name }}</td>
+                <td>${{ '%.2f'|format(p.price) }}</td>
+                <td>{{ p.desc }}</td>
+                <td>
+                    <a href="{{ url_for('admin_edit_product', product_id=p.id) }}">Edit</a>
+                    <form action="{{ url_for('admin_delete_product', product_id=p.id) }}" method="POST" style="display:inline-block;">
+                        <button type="submit" onclick="return confirm('Are you sure?')">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -166,3 +166,78 @@ footer {
     margin-top: 40px;
     font-size: 0.9em;
 }
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background: #f8f8f8;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+h1, h2, h3 {
+    color: #333;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background: #f0f0f0;
+}
+
+a {
+    text-decoration: none;
+    color: #007BFF;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+button {
+    padding: 5px 10px;
+    border: none;
+    background: #007BFF;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+ul li.success { color: green; }
+ul li.danger { color: red; }
+ul li.warning { color: orange; }
+item['birthstone']
+#addProductBtn {
+    background: linear-gradient(135deg, #ff99ff, #cc66ff);
+    color: #fff;
+    font-weight: 600;
+    padding: 0.6rem 1rem;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(204, 102, 255, 0.5);
+}
+
+#addProductBtn:hover {
+    background: linear-gradient(135deg, #ff66ff, #b266ff);
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(204, 102, 255, 0.6);
+}
